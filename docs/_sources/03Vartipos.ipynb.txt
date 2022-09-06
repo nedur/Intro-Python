@@ -1,0 +1,565 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "9c34b893",
+   "metadata": {},
+   "source": [
+    "# 3. Variáveis e tipos de dados\n",
+    "\n",
+    "Você pode criar vários tipos de objetos em *Python*, como, por exemplo, variáveis, matrizes, bancos de dados, gráficos, e outros. Vamos começar com o objeto mais simples: variável. \n",
+    "\n",
+    "## 3.1. Variáveis\n",
+    "\n",
+    "\"*Uma variável permite que você armazene qualquer valor como um número, texto ou até mesmo objetos maiores.*\"\n",
+    "https://python.land/python-tutorial\n",
+    "\n",
+    "Ao criar uma variável, podemos depois utilizá-la a partir de seu nome, fazendo cálculos ou modificações. Por exemplo, em 2019, a população brasileira (estimada pelo Instituto Brasilieiro de Geografia e Estatística - IBGE) foi de 210.147.125 habitantes. Vamos criar a variável **pop** e atribuir esse número a ela: "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "57d8e82c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "pop = 210147125"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "fa32567a",
+   "metadata": {},
+   "source": [
+    "Repare que ao executar esse comando não há nenhuma saída. Isso porque, o dado foi apenas armazenado. Podemos retomar esse valor simplesmente digitando: "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "1dc3a95b",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "210147125"
+      ]
+     },
+     "execution_count": 2,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pop"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "715dd734",
+   "metadata": {},
+   "source": [
+    "Ou:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "a9d05f0b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "210147125\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(pop)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "05dd85ae",
+   "metadata": {},
+   "source": [
+    "As duas saídas são equivalentes, porém no segundo caso estamos usando uma *função*. \n",
+    "\n",
+    "Uma função é um conjunto de códigos que executa alguma operação ou tarefa específica. Esse conjunto de códigos já vem instalado (como é o caso da função `print()`), pode vir com algum pacote ou pode ser criado. Vamos falar mais sobre funções nas seções seguintes. \n",
+    "\n",
+    "Por enquanto, vamos continuar criando variáveis. \n",
+    "\n",
+    "Outra variável interessante, também para 2019 é o PIB brasileriro (também calculado pelo IBGE). No mesmo ano, em 2019, o PIB brasileiro foi de 7,3 trilhões de reais, ou 7.389.131 milhões. Vamos salvar esse valor como **PIB_Brasil**:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "9f8943ff",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "PIB_Brasil = 7389131"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1e8a27a1",
+   "metadata": {},
+   "source": [
+    "Agora, podemos utilizar essas duas informações em conjunto para obter o PIB per capita brasileiro. Como o PIB está em milhões, vamos multiplicá-lo por 1.000.000 para obter o valor do PIB per capita em reais:  "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "7419025c",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "35161.703972871386"
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "PIB_pc = PIB_Brasil*1000000/pop\n",
+    "PIB_pc"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f616826a",
+   "metadata": {},
+   "source": [
+    "Você vai concluir que o PIB per capita em 2019 foi de 35.617 reais.  \n",
+    "\n",
+    "<div class=\"alert alert-info\"> \n",
+    "    \n",
+    "**Observação:**\n",
+    "\n",
+    "Repare alguns pontos interessantes:\n",
+    "    \n",
+    "1. Os mesmos operadores matemáticos que você aprendeu antes foram utilizados para o cálculo do PIB per capita;\n",
+    "    \n",
+    "2. Incluímos um número no cálculo, e ele foi compreendido normalmente dentro na operação; \n",
+    "    \n",
+    "</div>\n",
+    "\n",
+    "Assim como observado para texto nos operadores lógicos, as variáveis são sensíveis a letras maiúsculas e minúsculas. Se você digitar *PIB_brasil* ao invés de *PIB_Brasil* receberá uma mensagem de erro: "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "04852d7b",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "NameError",
+     "evalue": "name 'PIB_brasil' is not defined",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[1;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+      "Input \u001b[1;32mIn [6]\u001b[0m, in \u001b[0;36m<cell line: 1>\u001b[1;34m()\u001b[0m\n\u001b[1;32m----> 1\u001b[0m PIB_pc \u001b[38;5;241m=\u001b[39m \u001b[43mPIB_brasil\u001b[49m\u001b[38;5;241m*\u001b[39m\u001b[38;5;241m1000000\u001b[39m\u001b[38;5;241m/\u001b[39mpop\n",
+      "\u001b[1;31mNameError\u001b[0m: name 'PIB_brasil' is not defined"
+     ]
+    }
+   ],
+   "source": [
+    "PIB_pc = PIB_brasil*1000000/pop"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "94984574",
+   "metadata": {},
+   "source": [
+    "<div class=\"alert alert-info\"> \n",
+    "    \n",
+    "**Observação:**\n",
+    "    \n",
+    "Vale ressaltar, que os nomes das variáveis podem conter letras, números, underline, porém há algumas restrições. Os nomes de variáveis não podem:\n",
+    "\n",
+    "1.Começar com números;\n",
+    "\n",
+    "2.Usar \"palavras reservadas\", ou seja, nome de funções, classe de objetos;\n",
+    "    \n",
+    "    Alguns exemplos de palavras reservadas: False, class, finally, is, return, None, continue , for, lambda, try, True,  def, from, nonlocal, While, and, del, global, not, with, as, elif, if, or, yield, assert, else, import, pass, break, except, in, raise.\n",
+    "\n",
+    "3.Possuir espaço em branco: \"uma variavel\", por exemplo. \n",
+    "    \n",
+    "Para testar, tente criar algumas variáveis deste tipo, como: \n",
+    "    `1x = 10`\n",
+    "    `class = 10`\n",
+    "    `uma variavel = 50`\n",
+    "\n",
+    "Mais informações sobre convenções de nomeclatura podem ser consultadas em: https://peps.python.org/pep-0008/#naming-conventions\n",
+    "\n",
+    "</div>\n",
+    "\n",
+    "\n",
+    "Operadores lógicos também podem ser utilizados em variáveis. Por exemplo, você pode querer saber se o PIB per capita no Brasil é maior do que 40 mil reais (você já sabe, mas faz de conta que não!):"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "4567e234",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "False"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "PIB_pc > 40000"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "df98e5e0",
+   "metadata": {},
+   "source": [
+    "A saída é um nome lógico, dizendo que seu teste `PIB_pc > 40000` é falso. \n",
+    "\n",
+    "## 3.2. Tipos de variáveis\n",
+    "\n",
+    "Por enquanto, todas as variáveis criadas são números. No caso das variáveis *pop* e *PIB_Brasil* esses números são inteiros, enquanto o valor resultado da variável PIB_pc contém casas decimais (não é um número inteiro). Isso implica no tipo de variável criada. Para verificar essa diferença, podemos usar a função `type()`: "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "cd681a2e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'int'>\n",
+      "<class 'int'>\n",
+      "<class 'float'>\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(type(pop))\n",
+    "print(type(PIB_Brasil))\n",
+    "print(type(PIB_pc))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bedbef8b",
+   "metadata": {},
+   "source": [
+    "Observe que as duas primeiras variáveis retornaram <class 'int'>, informando que são **inteiros**, enquanto a terceira tem classe do tipo 'float', utilizada para números com **casas decimais**. \n",
+    "\n",
+    "Observe também que foi utilizada novamente a função `print()`, juntamente com a função `type()` para que seja possível visualizar as três saídas (para cada uma das variáveis). Se você não utilizar a função print (apenas type) a saída será referente apenas à última linha de código.\n",
+    "\n",
+    "Outros tipos de variáveis são: \n",
+    "\n",
+    "- String: para texto;\n",
+    "- Booleano (Booleans): para nomes lógicos;\n",
+    "- Complex: para números complexos (vamos deixar esses de lado por enquanto!). \n",
+    "\n",
+    "Podemos então criar uma variável com o nome país com o texto *Brasil*. Vamos deixar o nome da variável sem acento para evitar problemas! \n",
+    "\n",
+    "Essa variável é um *string*, ou *str* como irá mostrar de forma abreviada a saída dessas linhas de código: "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "beedfb35",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "str"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pais = \"Brasil\"\n",
+    "type(pais)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8266df45",
+   "metadata": {},
+   "source": [
+    "Observe que no caso de uma variável do tipo *string* precisamos declarar o trecho de texto sempre entre aspas. \n",
+    "\n",
+    "Vamos também criar outras duas variáveis para indicarmos que falamos português e não espanhol, cujo tipo é Booleano (lógico): "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "438361a6",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'bool'>\n",
+      "<class 'bool'>\n"
+     ]
+    }
+   ],
+   "source": [
+    "portugues = True\n",
+    "espanhol = False\n",
+    "print(type(portugues))\n",
+    "print(type(espanhol))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3480d360",
+   "metadata": {},
+   "source": [
+    "Vamos também deixar claro que nossa língua não é o espanhol, e que estamos na América Latina. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "d3b900e5",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "local = \" está localizado na América Latina\""
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7766db08",
+   "metadata": {},
+   "source": [
+    "Não criamos essas variáveis por acaso!\n",
+    "\n",
+    "Algo interessante com os diferentes tipos de variáveis é seu comportamento diante de operações lógicas e matemáticas. Por exemplo, o que acontece se somarmos as variáveis \"pais\" e \"portugues\"? "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "4b9eed74",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "TypeError",
+     "evalue": "can only concatenate str (not \"bool\") to str",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[1;31mTypeError\u001b[0m                                 Traceback (most recent call last)",
+      "Input \u001b[1;32mIn [12]\u001b[0m, in \u001b[0;36m<cell line: 1>\u001b[1;34m()\u001b[0m\n\u001b[1;32m----> 1\u001b[0m \u001b[43mpais\u001b[49m\u001b[43m \u001b[49m\u001b[38;5;241;43m+\u001b[39;49m\u001b[43m \u001b[49m\u001b[43mportugues\u001b[49m\n",
+      "\u001b[1;31mTypeError\u001b[0m: can only concatenate str (not \"bool\") to str"
+     ]
+    }
+   ],
+   "source": [
+    "pais + portugues"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0226abc2",
+   "metadata": {},
+   "source": [
+    "O erro mostra que não podemos somar \"strings\" (letras), que não são booleanos, com \"strings\". Podemos nos perguntar, por que a menção de bool? Vamos tentar outra soma. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "fbbfac34",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "2"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "1 + portugues"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2dc6985e",
+   "metadata": {},
+   "source": [
+    "Agora não há mensagem de erro! Nesse caso, o valor lógico True é entendido como 1(um). Note que o valor lógico False, será sempre entendido como zero. Vejamos um exemplo:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "3400f220",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1"
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "1 + espanhol"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4f575abd",
+   "metadata": {},
+   "source": [
+    "Podemos também somar duas variáveis string: "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "675709a4",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Brasil está localizado na América Latina'"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pais + local"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a9ca37c1",
+   "metadata": {},
+   "source": [
+    "Podemos usar a função print para melhorar a frase: "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "5d4448f4",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "O Brasil está localizado na América Latina\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"O\", pais + local)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2201b8e4",
+   "metadata": {},
+   "source": [
+    "A última combinação parece bastante simples, mas é muito útil, por exemplo, quando você precisa gerar um relatório com alguma frase escrita automaticamente a partir dos seus dados. \n",
+    "\n",
+    "Finalmente, para visualizar todas as variáveis criadas, podemos utilizar o comando *%whos*:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "a89681de",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Variable     Type     Data/Info\n",
+      "-------------------------------\n",
+      "PIB_Brasil   int      7389131\n",
+      "PIB_pc       float    35161.703972871386\n",
+      "espanhol     bool     False\n",
+      "local        str       está localizado na América Latina\n",
+      "pais         str      Brasil\n",
+      "pop          int      210147125\n",
+      "portugues    bool     True\n"
+     ]
+    }
+   ],
+   "source": [
+    "%whos"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.9.12"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
