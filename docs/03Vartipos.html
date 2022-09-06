@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-br" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3. Variáveis e tipos de dados &mdash; Introdução ao Python 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. Listas" href="04Listas.html" />
+    <link rel="prev" title="2. Operações Básicas" href="02Opera.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Introdução ao Python
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Conteúdo:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="01Intro.html">1. Introdução</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02Opera.html">2. Operações Básicas</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Variáveis e tipos de dados</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#3.1.-Variáveis">3.1. Variáveis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#3.2.-Tipos-de-variáveis">3.2. Tipos de variáveis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="04Listas.html">4. Listas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05Vetores.html">5. Vetores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06Matrizes.html">6. Matrizes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07DataFrame.html">7. Data Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08Graf.html">8. Gráficos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09Mapas.html">9. Mapas</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Introdução ao Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>3. Variáveis e tipos de dados</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/03Vartipos.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+.jp-RenderedHTMLCommon table,
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+.jp-RenderedHTMLCommon thead,
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+.jp-RenderedHTMLCommon tr,
+.jp-RenderedHTMLCommon th,
+.jp-RenderedHTMLCommon td,
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+.jp-RenderedHTMLCommon th,
+div.rendered_html th {
+  font-weight: bold;
+}
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.jp-RenderedHTMLCommon tbody tr:hover,
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="3.-Variáveis-e-tipos-de-dados">
+<h1>3. Variáveis e tipos de dados<a class="headerlink" href="#3.-Variáveis-e-tipos-de-dados" title="Permalink to this headline"></a></h1>
+<p>Você pode criar vários tipos de objetos em <em>Python</em>, como, por exemplo, variáveis, matrizes, bancos de dados, gráficos, e outros. Vamos começar com o objeto mais simples: variável.</p>
+<section id="3.1.-Variáveis">
+<h2>3.1. Variáveis<a class="headerlink" href="#3.1.-Variáveis" title="Permalink to this headline"></a></h2>
+<p>“<em>Uma variável permite que você armazene qualquer valor como um número, texto ou até mesmo objetos maiores.</em>” <a class="reference external" href="https://python.land/python-tutorial">https://python.land/python-tutorial</a></p>
+<p>Ao criar uma variável, podemos depois utilizá-la a partir de seu nome, fazendo cálculos ou modificações. Por exemplo, em 2019, a população brasileira (estimada pelo Instituto Brasilieiro de Geografia e Estatística - IBGE) foi de 210.147.125 habitantes. Vamos criar a variável <strong>pop</strong> e atribuir esse número a ela:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pop</span> <span class="o">=</span> <span class="mi">210147125</span>
+</pre></div>
+</div>
+</div>
+<p>Repare que ao executar esse comando não há nenhuma saída. Isso porque, o dado foi apenas armazenado. Podemos retomar esse valor simplesmente digitando:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pop</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+210147125
+</pre></div></div>
+</div>
+<p>Ou:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+210147125
+</pre></div></div>
+</div>
+<p>As duas saídas são equivalentes, porém no segundo caso estamos usando uma <em>função</em>.</p>
+<p>Uma função é um conjunto de códigos que executa alguma operação ou tarefa específica. Esse conjunto de códigos já vem instalado (como é o caso da função <code class="docutils literal notranslate"><span class="pre">print()</span></code>), pode vir com algum pacote ou pode ser criado. Vamos falar mais sobre funções nas seções seguintes.</p>
+<p>Por enquanto, vamos continuar criando variáveis.</p>
+<p>Outra variável interessante, também para 2019 é o PIB brasileriro (também calculado pelo IBGE). No mesmo ano, em 2019, o PIB brasileiro foi de 7,3 trilhões de reais, ou 7.389.131 milhões. Vamos salvar esse valor como <strong>PIB_Brasil</strong>:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PIB_Brasil</span> <span class="o">=</span> <span class="mi">7389131</span>
+</pre></div>
+</div>
+</div>
+<p>Agora, podemos utilizar essas duas informações em conjunto para obter o PIB per capita brasileiro. Como o PIB está em milhões, vamos multiplicá-lo por 1.000.000 para obter o valor do PIB per capita em reais:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PIB_pc</span> <span class="o">=</span> <span class="n">PIB_Brasil</span><span class="o">*</span><span class="mi">1000000</span><span class="o">/</span><span class="n">pop</span>
+<span class="n">PIB_pc</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+35161.703972871386
+</pre></div></div>
+</div>
+<p>Você vai concluir que o PIB per capita em 2019 foi de 35.617 reais.</p>
+<div class="admonition note">
+<p class="admonition-title fa fa-exclamation-circle"><strong>Observação:</strong></p>
+<p>Repare alguns pontos interessantes:</p>
+<ol class="arabic simple">
+<li><p>Os mesmos operadores matemáticos que você aprendeu antes foram utilizados para o cálculo do PIB per capita;</p></li>
+<li><p>Incluímos um número no cálculo, e ele foi compreendido normalmente dentro na operação;</p></li>
+</ol>
+</div>
+<p>Assim como observado para texto nos operadores lógicos, as variáveis são sensíveis a letras maiúsculas e minúsculas. Se você digitar <em>PIB_brasil</em> ao invés de <em>PIB_Brasil</em> receberá uma mensagem de erro:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PIB_pc</span> <span class="o">=</span> <span class="n">PIB_brasil</span><span class="o">*</span><span class="mi">1000000</span><span class="o">/</span><span class="n">pop</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">NameError</span>                                 Traceback (most recent call last)
+Input <span class="ansi-green-intense-fg ansi-bold">In [6]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 1&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 1</span> PIB_pc <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">PIB_brasil</span><span style="color: rgb(98,98,98)">*</span><span style="color: rgb(98,98,98)">1000000</span><span style="color: rgb(98,98,98)">/</span>pop
+
+<span class="ansi-red-intense-fg ansi-bold">NameError</span>: name &#39;PIB_brasil&#39; is not defined
+</pre></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title fa fa-exclamation-circle"><strong>Observação:</strong></p>
+<p>Vale ressaltar, que os nomes das variáveis podem conter letras, números, underline, porém há algumas restrições. Os nomes de variáveis não podem:</p>
+<p>1.Começar com números;</p>
+<p>2.Usar “palavras reservadas”, ou seja, nome de funções, classe de objetos;</p>
+<p>Alguns exemplos de palavras reservadas: False, class, finally, is, return, None, continue , for, lambda, try, True, def, from, nonlocal, While, and, del, global, not, with, as, elif, if, or, yield, assert, else, import, pass, break, except, in, raise.</p>
+<p>3.Possuir espaço em branco: “uma variavel”, por exemplo.</p>
+<p>Para testar, tente criar algumas variáveis deste tipo, como: <code class="docutils literal notranslate"><span class="pre">1x</span> <span class="pre">=</span> <span class="pre">10</span></code> <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">=</span> <span class="pre">10</span></code> <code class="docutils literal notranslate"><span class="pre">uma</span> <span class="pre">variavel</span> <span class="pre">=</span> <span class="pre">50</span></code></p>
+<p>Mais informações sobre convenções de nomeclatura podem ser consultadas em: <a class="reference external" href="https://peps.python.org/pep-0008/#naming-conventions">https://peps.python.org/pep-0008/#naming-conventions</a></p>
+</div>
+<p>Operadores lógicos também podem ser utilizados em variáveis. Por exemplo, você pode querer saber se o PIB per capita no Brasil é maior do que 40 mil reais (você já sabe, mas faz de conta que não!):</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PIB_pc</span> <span class="o">&gt;</span> <span class="mi">40000</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+False
+</pre></div></div>
+</div>
+<p>A saída é um nome lógico, dizendo que seu teste <code class="docutils literal notranslate"><span class="pre">PIB_pc</span> <span class="pre">&gt;</span> <span class="pre">40000</span></code> é falso.</p>
+</section>
+<section id="3.2.-Tipos-de-variáveis">
+<h2>3.2. Tipos de variáveis<a class="headerlink" href="#3.2.-Tipos-de-variáveis" title="Permalink to this headline"></a></h2>
+<p>Por enquanto, todas as variáveis criadas são números. No caso das variáveis <em>pop</em> e <em>PIB_Brasil</em> esses números são inteiros, enquanto o valor resultado da variável PIB_pc contém casas decimais (não é um número inteiro). Isso implica no tipo de variável criada. Para verificar essa diferença, podemos usar a função <code class="docutils literal notranslate"><span class="pre">type()</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">pop</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">PIB_Brasil</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">PIB_pc</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;int&#39;&gt;
+&lt;class &#39;int&#39;&gt;
+&lt;class &#39;float&#39;&gt;
+</pre></div></div>
+</div>
+<p>Observe que as duas primeiras variáveis retornaram &lt;class ‘int’&gt;, informando que são <strong>inteiros</strong>, enquanto a terceira tem classe do tipo ‘float’, utilizada para números com <strong>casas decimais</strong>.</p>
+<p>Observe também que foi utilizada novamente a função <code class="docutils literal notranslate"><span class="pre">print()</span></code>, juntamente com a função <code class="docutils literal notranslate"><span class="pre">type()</span></code> para que seja possível visualizar as três saídas (para cada uma das variáveis). Se você não utilizar a função print (apenas type) a saída será referente apenas à última linha de código.</p>
+<p>Outros tipos de variáveis são:</p>
+<ul class="simple">
+<li><p>String: para texto;</p></li>
+<li><p>Booleano (Booleans): para nomes lógicos;</p></li>
+<li><p>Complex: para números complexos (vamos deixar esses de lado por enquanto!).</p></li>
+</ul>
+<p>Podemos então criar uma variável com o nome país com o texto <em>Brasil</em>. Vamos deixar o nome da variável sem acento para evitar problemas!</p>
+<p>Essa variável é um <em>string</em>, ou <em>str</em> como irá mostrar de forma abreviada a saída dessas linhas de código:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pais</span> <span class="o">=</span> <span class="s2">&quot;Brasil&quot;</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">pais</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+str
+</pre></div></div>
+</div>
+<p>Observe que no caso de uma variável do tipo <em>string</em> precisamos declarar o trecho de texto sempre entre aspas.</p>
+<p>Vamos também criar outras duas variáveis para indicarmos que falamos português e não espanhol, cujo tipo é Booleano (lógico):</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">portugues</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">espanhol</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">portugues</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">espanhol</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;bool&#39;&gt;
+&lt;class &#39;bool&#39;&gt;
+</pre></div></div>
+</div>
+<p>Vamos também deixar claro que nossa língua não é o espanhol, e que estamos na América Latina.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">local</span> <span class="o">=</span> <span class="s2">&quot; está localizado na América Latina&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>Não criamos essas variáveis por acaso!</p>
+<p>Algo interessante com os diferentes tipos de variáveis é seu comportamento diante de operações lógicas e matemáticas. Por exemplo, o que acontece se somarmos as variáveis “pais” e “portugues”?</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pais</span> <span class="o">+</span> <span class="n">portugues</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">TypeError</span>                                 Traceback (most recent call last)
+Input <span class="ansi-green-intense-fg ansi-bold">In [12]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 1&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 1</span> <span class="ansi-yellow-bg">pais</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">+</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">portugues</span>
+
+<span class="ansi-red-intense-fg ansi-bold">TypeError</span>: can only concatenate str (not &#34;bool&#34;) to str
+</pre></div></div>
+</div>
+<p>O erro mostra que não podemos somar “strings” (letras), que não são booleanos, com “strings”. Podemos nos perguntar, por que a menção de bool? Vamos tentar outra soma.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">+</span> <span class="n">portugues</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2
+</pre></div></div>
+</div>
+<p>Agora não há mensagem de erro! Nesse caso, o valor lógico True é entendido como 1(um). Note que o valor lógico False, será sempre entendido como zero. Vejamos um exemplo:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">+</span> <span class="n">espanhol</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1
+</pre></div></div>
+</div>
+<p>Podemos também somar duas variáveis string:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pais</span> <span class="o">+</span> <span class="n">local</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;Brasil está localizado na América Latina&#39;
+</pre></div></div>
+</div>
+<p>Podemos usar a função print para melhorar a frase:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;O&quot;</span><span class="p">,</span> <span class="n">pais</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+O Brasil está localizado na América Latina
+</pre></div></div>
+</div>
+<p>A última combinação parece bastante simples, mas é muito útil, por exemplo, quando você precisa gerar um relatório com alguma frase escrita automaticamente a partir dos seus dados.</p>
+<p>Finalmente, para visualizar todas as variáveis criadas, podemos utilizar o comando <em>%whos</em>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">whos</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Variable     Type     Data/Info
+-------------------------------
+PIB_Brasil   int      7389131
+PIB_pc       float    35161.703972871386
+espanhol     bool     False
+local        str       está localizado na América Latina
+pais         str      Brasil
+pop          int      210147125
+portugues    bool     True
+</pre></div></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="02Opera.html" class="btn btn-neutral float-left" title="2. Operações Básicas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="04Listas.html" class="btn btn-neutral float-right" title="4. Listas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Kênia B. de Souza e Vinícius A. Vale.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

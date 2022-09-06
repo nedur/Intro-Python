@@ -1,0 +1,3422 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-br" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7. Data Frames &mdash; Introdução ao Python 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="8. Gráficos" href="08Graf.html" />
+    <link rel="prev" title="6. Matrizes" href="06Matrizes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Introdução ao Python
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Conteúdo:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="01Intro.html">1. Introdução</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02Opera.html">2. Operações Básicas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03Vartipos.html">3. Variáveis e tipos de dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04Listas.html">4. Listas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05Vetores.html">5. Vetores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06Matrizes.html">6. Matrizes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Data Frames</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#7.1.-Definição">7.1. Definição</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#7.2.-Selecionando-informações-em-um-Data-Frame">7.2. Selecionando informações em um Data Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#7.3.-Importação-de-dados">7.3. Importação de dados</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#7.3.1.-Arquivos-CSV">7.3.1. Arquivos CSV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#7.3.2.-Arquivos-XLS-e-XLSX">7.3.2. Arquivos XLS e XLSX</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#7.4.-Manipulação-de-dados">7.4. Manipulação de dados</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#7.4.1.-Selecionar-variáveis">7.4.1. Selecionar variáveis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#7.4.2.-Renomear-variáveis">7.4.2. Renomear variáveis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#7.4.3.-Modificar-dados">7.4.3. Modificar dados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#7.4.4.-Agrupar-e-agregar-dados">7.4.4. Agrupar e agregar dados</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#7.5.-Exportação-de-dados">7.5. Exportação de dados</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#7.5.1.-Dados-em-CSV">7.5.1. <strong>Dados em CSV</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#7.5.2.-Dados-em-XLSX">7.5.2. <strong>Dados em XLSX</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="08Graf.html">8. Gráficos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09Mapas.html">9. Mapas</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Introdução ao Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>7. Data Frames</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/07DataFrame.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+.jp-RenderedHTMLCommon table,
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+.jp-RenderedHTMLCommon thead,
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+.jp-RenderedHTMLCommon tr,
+.jp-RenderedHTMLCommon th,
+.jp-RenderedHTMLCommon td,
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+.jp-RenderedHTMLCommon th,
+div.rendered_html th {
+  font-weight: bold;
+}
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.jp-RenderedHTMLCommon tbody tr:hover,
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="7.-Data-Frames">
+<h1>7. Data Frames<a class="headerlink" href="#7.-Data-Frames" title="Permalink to this headline"></a></h1>
+<section id="7.1.-Definição">
+<h2>7.1. Definição<a class="headerlink" href="#7.1.-Definição" title="Permalink to this headline"></a></h2>
+<p>Em síntese, um <strong>data frame</strong> consiste em uma tabela de dados capaz de armazenar diferentes classes de dados nas suas colunas.</p>
+<p>Para ver um exemplo de <em>data frame</em>, podemos usar os dados do livro <strong>Introdução à Econometria: uma abordagem moderna</strong> de autoria de Jeffrey M. Wooldridge.</p>
+<p>Para tal, precisamos instalar o pacote <strong>wooldridge</strong>.</p>
+<p>Uma forma de instalar é utilizando o <strong>Jupyter Notebook</strong> (ou o <strong>Google Colaboratory</strong>) e digitando o comando:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!pip install wooldridge
+</pre></div>
+</div>
+<p>Ou, com a plataforma <strong>Anaconda</strong> aberta, abra o prompt de comando, clicando no botão <em>Launch</em> em <em>CMD.exe Prompt</em>, como mostra a figura abaixo:</p>
+<img alt="AnacondaNAVIGATOR_prompt" src="_images/AnacondaNAVIGATOR_prompt.png" />
+<p>Abrirá uma janela, como abaixo:</p>
+<img alt="Prompt_Anaconda" src="_images/Prompt_Anaconda.png" />
+<p>Nessa janela utilize o comando:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install wooldridge
+</pre></div>
+</div>
+<div class="admonition warning">
+<p>Oberve que na janela de comando não há o símbolo de exclamação no início!</p>
+</div>
+<p>Após digitar o comando, pressione <code class="docutils literal notranslate"><span class="pre">enter</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title fa fa-exclamation-circle"><strong>Observação:</strong></p>
+<p>Mais informações sobre a instalação e o conteúdo desse pacote pode ser encontradas <a class="reference external" href="https://pypi.org/project/wooldridge/">aqui</a>.</p>
+</div>
+<p>De volta ao <strong>Jupyter Notebook</strong>, para acessar o pacote, precisamos usar o seguinte comando:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wooldridge</span> <span class="k">as</span> <span class="nn">wd</span>
+</pre></div>
+</div>
+</div>
+<p>O pacote contém vários dados.</p>
+<p>Como exemplo, faça leitura da base de dados <strong>wage1</strong> com a função <code class="docutils literal notranslate"><span class="pre">wd.data()</span></code>(observe que <em>wd</em> foi a sigla utilizada quando importamos os dados do pacote <em>wooldridge</em>):</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wage1</span> <span class="o">=</span> <span class="n">wd</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="s1">&#39;wage1&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Para ver os dados:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wage1</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>wage</th>
+      <th>educ</th>
+      <th>exper</th>
+      <th>tenure</th>
+      <th>nonwhite</th>
+      <th>female</th>
+      <th>married</th>
+      <th>numdep</th>
+      <th>smsa</th>
+      <th>northcen</th>
+      <th>...</th>
+      <th>trcommpu</th>
+      <th>trade</th>
+      <th>services</th>
+      <th>profserv</th>
+      <th>profocc</th>
+      <th>clerocc</th>
+      <th>servocc</th>
+      <th>lwage</th>
+      <th>expersq</th>
+      <th>tenursq</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3.10</td>
+      <td>11</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1.131402</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3.24</td>
+      <td>12</td>
+      <td>22</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.175573</td>
+      <td>484</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.00</td>
+      <td>11</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1.098612</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>6.00</td>
+      <td>8</td>
+      <td>44</td>
+      <td>28</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1.791759</td>
+      <td>1936</td>
+      <td>784</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.30</td>
+      <td>12</td>
+      <td>7</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1.667707</td>
+      <td>49</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>521</th>
+      <td>15.00</td>
+      <td>16</td>
+      <td>14</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2.708050</td>
+      <td>196</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>522</th>
+      <td>2.27</td>
+      <td>10</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.819780</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>523</th>
+      <td>4.67</td>
+      <td>15</td>
+      <td>13</td>
+      <td>18</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1.541159</td>
+      <td>169</td>
+      <td>324</td>
+    </tr>
+    <tr>
+      <th>524</th>
+      <td>11.56</td>
+      <td>16</td>
+      <td>5</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2.447551</td>
+      <td>25</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>525</th>
+      <td>3.50</td>
+      <td>14</td>
+      <td>5</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1.252763</td>
+      <td>25</td>
+      <td>16</td>
+    </tr>
+  </tbody>
+</table>
+<p>526 rows × 24 columns</p>
+</div></div>
+</div>
+<p>Observe que a primeira coluna indica o número da observação (esse número é chamado de índice - <em>index</em> - dos dados), e a primeira linha refere-se ao nome das variáveis.</p>
+<p>No total (contando a primeira linha e a primeira coluna), a base de dados conta com 526 linhas e 24 colunas.</p>
+<p>Alternativamente, podemos acessar essa informação com o atributo <code class="docutils literal notranslate"><span class="pre">shape</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wage1</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(526, 24)
+</pre></div></div>
+</div>
+<p>Para visualizar o tipo de dado, podemos utilizar a função <code class="docutils literal notranslate"><span class="pre">type()</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">wage1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+pandas.core.frame.DataFrame
+</pre></div></div>
+</div>
+<p>Para realizar algumas manipulações (transformações) e análises de dados, precisamos usar um pacote específico.</p>
+<p>O <strong>Pandas</strong> é um pacote Python que permite realizar tais manipulações e análises de dados. Se você está utilizando Anaconda, o pacote já está instalado na sua máquina.</p>
+<p>A saída acima, indica que você está usando um <em>Data Frame</em> desse pacote.</p>
+<p>Para sabermos mais informações sobre os dados, podemos utilizar a função <code class="docutils literal notranslate"><span class="pre">info()</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wage1</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 526 entries, 0 to 525
+Data columns (total 24 columns):
+ #   Column    Non-Null Count  Dtype
+---  ------    --------------  -----
+ 0   wage      526 non-null    float64
+ 1   educ      526 non-null    int64
+ 2   exper     526 non-null    int64
+ 3   tenure    526 non-null    int64
+ 4   nonwhite  526 non-null    int64
+ 5   female    526 non-null    int64
+ 6   married   526 non-null    int64
+ 7   numdep    526 non-null    int64
+ 8   smsa      526 non-null    int64
+ 9   northcen  526 non-null    int64
+ 10  south     526 non-null    int64
+ 11  west      526 non-null    int64
+ 12  construc  526 non-null    int64
+ 13  ndurman   526 non-null    int64
+ 14  trcommpu  526 non-null    int64
+ 15  trade     526 non-null    int64
+ 16  services  526 non-null    int64
+ 17  profserv  526 non-null    int64
+ 18  profocc   526 non-null    int64
+ 19  clerocc   526 non-null    int64
+ 20  servocc   526 non-null    int64
+ 21  lwage     526 non-null    float64
+ 22  expersq   526 non-null    int64
+ 23  tenursq   526 non-null    int64
+dtypes: float64(2), int64(22)
+memory usage: 98.8 KB
+</pre></div></div>
+</div>
+<p>A saída nos mostra todas as variáveis, a quantidadade de entradas não nulas e o tipo dos dados em cada coluna.</p>
+<p>Uma forma rápida de acessar informações descritivas (número de observações, média, desvio padrão, mínimo, quantis e máximo) sobre cada variável é o uso da função <code class="docutils literal notranslate"><span class="pre">describe()</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wage1</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>wage</th>
+      <th>educ</th>
+      <th>exper</th>
+      <th>tenure</th>
+      <th>nonwhite</th>
+      <th>female</th>
+      <th>married</th>
+      <th>numdep</th>
+      <th>smsa</th>
+      <th>northcen</th>
+      <th>...</th>
+      <th>trcommpu</th>
+      <th>trade</th>
+      <th>services</th>
+      <th>profserv</th>
+      <th>profocc</th>
+      <th>clerocc</th>
+      <th>servocc</th>
+      <th>lwage</th>
+      <th>expersq</th>
+      <th>tenursq</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>526.000000</td>
+      <td>526.000000</td>
+      <td>526.00000</td>
+      <td>526.000000</td>
+      <td>526.000000</td>
+      <td>526.000000</td>
+      <td>526.000000</td>
+      <td>526.000000</td>
+      <td>526.000000</td>
+      <td>526.000000</td>
+      <td>...</td>
+      <td>526.000000</td>
+      <td>526.000000</td>
+      <td>526.000000</td>
+      <td>526.000000</td>
+      <td>526.000000</td>
+      <td>526.000000</td>
+      <td>526.000000</td>
+      <td>526.000000</td>
+      <td>526.000000</td>
+      <td>526.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>5.896103</td>
+      <td>12.562738</td>
+      <td>17.01711</td>
+      <td>5.104563</td>
+      <td>0.102662</td>
+      <td>0.479087</td>
+      <td>0.608365</td>
+      <td>1.043726</td>
+      <td>0.722433</td>
+      <td>0.250951</td>
+      <td>...</td>
+      <td>0.043726</td>
+      <td>0.287072</td>
+      <td>0.100760</td>
+      <td>0.258555</td>
+      <td>0.366920</td>
+      <td>0.167300</td>
+      <td>0.140684</td>
+      <td>1.623268</td>
+      <td>473.435361</td>
+      <td>78.150190</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>3.693086</td>
+      <td>2.769022</td>
+      <td>13.57216</td>
+      <td>7.224462</td>
+      <td>0.303805</td>
+      <td>0.500038</td>
+      <td>0.488580</td>
+      <td>1.261891</td>
+      <td>0.448225</td>
+      <td>0.433973</td>
+      <td>...</td>
+      <td>0.204680</td>
+      <td>0.452826</td>
+      <td>0.301298</td>
+      <td>0.438257</td>
+      <td>0.482423</td>
+      <td>0.373599</td>
+      <td>0.348027</td>
+      <td>0.531538</td>
+      <td>616.044772</td>
+      <td>199.434664</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.530000</td>
+      <td>0.000000</td>
+      <td>1.00000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>-0.634878</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>3.330000</td>
+      <td>12.000000</td>
+      <td>5.00000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.202972</td>
+      <td>25.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>4.650000</td>
+      <td>12.000000</td>
+      <td>13.50000</td>
+      <td>2.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.536867</td>
+      <td>182.500000</td>
+      <td>4.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>6.880000</td>
+      <td>14.000000</td>
+      <td>26.00000</td>
+      <td>7.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>2.000000</td>
+      <td>1.000000</td>
+      <td>0.750000</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.928619</td>
+      <td>676.000000</td>
+      <td>49.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>24.980000</td>
+      <td>18.000000</td>
+      <td>51.00000</td>
+      <td>44.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>6.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>...</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>3.218076</td>
+      <td>2601.000000</td>
+      <td>1936.000000</td>
+    </tr>
+  </tbody>
+</table>
+<p>8 rows × 24 columns</p>
+</div></div>
+</div>
+</section>
+<section id="7.2.-Selecionando-informações-em-um-Data-Frame">
+<h2>7.2. Selecionando informações em um Data Frame<a class="headerlink" href="#7.2.-Selecionando-informações-em-um-Data-Frame" title="Permalink to this headline"></a></h2>
+<p>Existem diversas formas para selecionar partes de um <strong>Data Frame</strong>.</p>
+<p>Por exemplo, para selecionar a segunda linha da terceira coluna da <em>data frame</em> <strong>wage1</strong>, podemos usar o método <code class="docutils literal notranslate"><span class="pre">iloc</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wage1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+22
+</pre></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title fa fa-exclamation-circle"><strong>Observação:</strong></p>
+<p>Um método se refere a uma função que é parte de uma classe. Nesse caso, <code class="docutils literal notranslate"><span class="pre">iloc</span></code> é um método que está ligado a objetos do tipo <em>Data Frame</em>. Uma função pode ser utilizada em qualquer instancia ou objeto de qualquer classe. Assim, todos os métodos são funções, mas nem todas funções são métodos.</p>
+<p>Fonte: <a class="reference external" href="https://www.datacamp.com/tutorial/functions-python-tutorial#functions-in-python">datacamp</a></p>
+</div>
+<p>Lembre-se que a indexação em Python começa em zero. Logo, a segunda linha tem índice 1, a terceira coluna tem índice 2, e assim por diante.</p>
+<p>De forma equivalente, podemos utilizar o nome da coluna, por meio do método <code class="docutils literal notranslate"><span class="pre">loc</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wage1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;exper&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+22
+</pre></div></div>
+</div>
+<p>Para selecionar somente as colunas “wage” e “educ” pelo nome, podemos usar:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wage1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;wage&#39;</span><span class="p">,</span> <span class="s1">&#39;educ&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+wage     3.24
+educ    12.00
+Name: 1, dtype: float64
+</pre></div></div>
+</div>
+<p>Podemos selecionar todas as informações de uma variável. Por exemplo, para selecionar apenas a variável <em>educ</em> do <em>data frame</em>, podemos usar a seguinte sintaxe:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wage1</span><span class="p">[[</span><span class="s1">&#39;educ&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>educ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>521</th>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>522</th>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>523</th>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>524</th>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>525</th>
+      <td>14</td>
+    </tr>
+  </tbody>
+</table>
+<p>526 rows × 1 columns</p>
+</div></div>
+</div>
+<p>Observe que utilizamos colchetes duas vezes. Isso porque, estamos criando uma lista de colunas a serem selecionadas do banco de dados. O resultado é um subconjunto, que também possui o formato de data frame. Você pode selecionar quantas colunas desejar.</p>
+<p>Podemos utilizar algum critério lógico para selecionar as linhas. Por exemplo, suponha que você queira observar apenas pessoas com mais de 30 anos de experiência no trabalho. Nesse caso, você utilizar o seguinte comando:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wage1</span><span class="p">[</span><span class="n">wage1</span><span class="p">[</span><span class="s2">&quot;tenure&quot;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">30</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>wage</th>
+      <th>educ</th>
+      <th>exper</th>
+      <th>tenure</th>
+      <th>nonwhite</th>
+      <th>female</th>
+      <th>married</th>
+      <th>numdep</th>
+      <th>smsa</th>
+      <th>northcen</th>
+      <th>...</th>
+      <th>trcommpu</th>
+      <th>trade</th>
+      <th>services</th>
+      <th>profserv</th>
+      <th>profocc</th>
+      <th>clerocc</th>
+      <th>servocc</th>
+      <th>lwage</th>
+      <th>expersq</th>
+      <th>tenursq</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>73</th>
+      <td>2.91</td>
+      <td>12</td>
+      <td>20</td>
+      <td>34</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1.068153</td>
+      <td>400</td>
+      <td>1156</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>11.76</td>
+      <td>14</td>
+      <td>40</td>
+      <td>39</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2.464704</td>
+      <td>1600</td>
+      <td>1521</td>
+    </tr>
+    <tr>
+      <th>264</th>
+      <td>8.75</td>
+      <td>12</td>
+      <td>47</td>
+      <td>44</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2.169054</td>
+      <td>2209</td>
+      <td>1936</td>
+    </tr>
+    <tr>
+      <th>306</th>
+      <td>6.25</td>
+      <td>11</td>
+      <td>35</td>
+      <td>31</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1.832582</td>
+      <td>1225</td>
+      <td>961</td>
+    </tr>
+    <tr>
+      <th>342</th>
+      <td>15.00</td>
+      <td>11</td>
+      <td>35</td>
+      <td>31</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2.708050</td>
+      <td>1225</td>
+      <td>961</td>
+    </tr>
+    <tr>
+      <th>457</th>
+      <td>6.50</td>
+      <td>14</td>
+      <td>41</td>
+      <td>33</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1.871802</td>
+      <td>1681</td>
+      <td>1089</td>
+    </tr>
+  </tbody>
+</table>
+<p>6 rows × 24 columns</p>
+</div></div>
+</div>
+<p>Observe que esse comando tem duas partes. Dentro do colchete estamos utilizando um operador lógico que indicara <em>True</em> ou <em>False</em> em cada linha. Depois, estamos pedindo para selecionar apenas <em>True</em>.</p>
+<p>Para que fique mais claro, observe o que ocorre quando usamos apenas o comando que está dentro dos colchetes:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wage1</span><span class="p">[</span><span class="s2">&quot;tenure&quot;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">30</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0      False
+1      False
+2      False
+3      False
+4      False
+       ...
+521    False
+522    False
+523    False
+524    False
+525    False
+Name: tenure, Length: 526, dtype: bool
+</pre></div></div>
+</div>
+<p>Temos uma lista de booleanos, informando se para cada linha é válido que a experiência é maior do que 30. Ou seja, quando colocamos o comando completo (<code class="docutils literal notranslate"><span class="pre">wage1[wage1[&quot;tenure&quot;]&gt;30]</span></code>) estamos selecionando as linhas do Data Frame <strong>wage1</strong> para as quais (<code class="docutils literal notranslate"><span class="pre">[wage1[&quot;tenure&quot;]&gt;30]</span></code>) é verdadeiro.</p>
+<p>Outras três funções muito usadas em data frames são: <code class="docutils literal notranslate"><span class="pre">head()</span></code>(para visualizar as primeiras 5 linhas da base de dados) e <code class="docutils literal notranslate"><span class="pre">tail()</span></code> (para visualizar as últimas 5 linhas da base de dados).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wage1</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>wage</th>
+      <th>educ</th>
+      <th>exper</th>
+      <th>tenure</th>
+      <th>nonwhite</th>
+      <th>female</th>
+      <th>married</th>
+      <th>numdep</th>
+      <th>smsa</th>
+      <th>northcen</th>
+      <th>...</th>
+      <th>trcommpu</th>
+      <th>trade</th>
+      <th>services</th>
+      <th>profserv</th>
+      <th>profocc</th>
+      <th>clerocc</th>
+      <th>servocc</th>
+      <th>lwage</th>
+      <th>expersq</th>
+      <th>tenursq</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3.10</td>
+      <td>11</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1.131402</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3.24</td>
+      <td>12</td>
+      <td>22</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.175573</td>
+      <td>484</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.00</td>
+      <td>11</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1.098612</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>6.00</td>
+      <td>8</td>
+      <td>44</td>
+      <td>28</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1.791759</td>
+      <td>1936</td>
+      <td>784</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.30</td>
+      <td>12</td>
+      <td>7</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1.667707</td>
+      <td>49</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 24 columns</p>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wage1</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>wage</th>
+      <th>educ</th>
+      <th>exper</th>
+      <th>tenure</th>
+      <th>nonwhite</th>
+      <th>female</th>
+      <th>married</th>
+      <th>numdep</th>
+      <th>smsa</th>
+      <th>northcen</th>
+      <th>...</th>
+      <th>trcommpu</th>
+      <th>trade</th>
+      <th>services</th>
+      <th>profserv</th>
+      <th>profocc</th>
+      <th>clerocc</th>
+      <th>servocc</th>
+      <th>lwage</th>
+      <th>expersq</th>
+      <th>tenursq</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>521</th>
+      <td>15.00</td>
+      <td>16</td>
+      <td>14</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2.708050</td>
+      <td>196</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>522</th>
+      <td>2.27</td>
+      <td>10</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.819780</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>523</th>
+      <td>4.67</td>
+      <td>15</td>
+      <td>13</td>
+      <td>18</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1.541159</td>
+      <td>169</td>
+      <td>324</td>
+    </tr>
+    <tr>
+      <th>524</th>
+      <td>11.56</td>
+      <td>16</td>
+      <td>5</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2.447551</td>
+      <td>25</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>525</th>
+      <td>3.50</td>
+      <td>14</td>
+      <td>5</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1.252763</td>
+      <td>25</td>
+      <td>16</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 24 columns</p>
+</div></div>
+</div>
+</section>
+<section id="7.3.-Importação-de-dados">
+<h2>7.3. Importação de dados<a class="headerlink" href="#7.3.-Importação-de-dados" title="Permalink to this headline"></a></h2>
+<p>Para <strong>Data Frames</strong>, a leitura, manipulação e exportação de diversos formatos de dados (CSV, XLS, XLSX, TXT, DTA, entre outros) pode ser feita utilizando o <strong>pandas</strong>.</p>
+<p>Inicialmente, você precisará importar o pandas com o seguinte comando:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+<section id="7.3.1.-Arquivos-CSV">
+<h3>7.3.1. Arquivos CSV<a class="headerlink" href="#7.3.1.-Arquivos-CSV" title="Permalink to this headline"></a></h3>
+<p>Como exemplo, vamos usar a <strong>Base de Dados do Comércio Exterior Brasileiro (Comex Stat)</strong> disponibilizada pelo Governo Federal (Ministério da Economia) em <a class="reference external" href="https://www.gov.br/produtividade-e-comercio-exterior/pt-br/assuntos/comercio-exterior/estatisticas/base-de-dados-bruta">www.gov.br</a>. Você pode baixar os dados e salvar no seu diretório de trabalho.</p>
+<p>Nos exemplos abaixo, vamos usar a base de dados de Exportações detalhada por NCM (Nomenclatura Comum do Mercosul) para o ano 2019.</p>
+<div class="admonition note">
+<p class="admonition-title fa fa-exclamation-circle"><strong>Observação:</strong></p>
+<p>Os dados também estão disponíveis <a class="reference external" href="https://nedurcode.com/python/EXP_2019.rar">AQUI</a> em zip. Extraia os dados no seu diretório de trabalho!</p>
+</div>
+<p>O arquivo CSV disponibilizado no Comex Stat utiliza separador ponto e vírgula (;) e apresenta o seguinte detalhamento:</p>
+<ul class="simple">
+<li><p>Ano</p></li>
+<li><p>Mês</p></li>
+<li><p>Código NCM</p></li>
+<li><p>Código da unidade estatística</p></li>
+<li><p>Código de país de destino/origem do produto</p></li>
+<li><p>Código da UF de origem/destino do produto</p></li>
+<li><p>Código da via de transporte</p></li>
+<li><p>Código da URF de embarque/desembarque</p></li>
+<li><p>Quantidade estatística</p></li>
+<li><p>Quilograma líquido</p></li>
+<li><p>Valor dólar FOB (US$)</p></li>
+</ul>
+<p>Para importar os dados, podemos usar a função <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code> do pacote <strong>pandas</strong>. Para tal, vamos criar um objeto <strong>dexp</strong> (dados de exportações) da seguinte forma:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dexp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;EXP_2019.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dexp</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CO_ANO</th>
+      <th>CO_MES</th>
+      <th>CO_NCM</th>
+      <th>CO_UNID</th>
+      <th>CO_PAIS</th>
+      <th>SG_UF_NCM</th>
+      <th>CO_VIA</th>
+      <th>CO_URF</th>
+      <th>QT_ESTAT</th>
+      <th>KG_LIQUIDO</th>
+      <th>VL_FOB</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2019</td>
+      <td>12</td>
+      <td>70193900</td>
+      <td>10</td>
+      <td>97</td>
+      <td>SP</td>
+      <td>7</td>
+      <td>147600</td>
+      <td>0</td>
+      <td>0</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2019</td>
+      <td>12</td>
+      <td>85444200</td>
+      <td>10</td>
+      <td>63</td>
+      <td>SP</td>
+      <td>4</td>
+      <td>817700</td>
+      <td>99</td>
+      <td>96</td>
+      <td>9299</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2019</td>
+      <td>12</td>
+      <td>84099111</td>
+      <td>11</td>
+      <td>493</td>
+      <td>SP</td>
+      <td>4</td>
+      <td>817600</td>
+      <td>2</td>
+      <td>2</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2019</td>
+      <td>12</td>
+      <td>87087090</td>
+      <td>11</td>
+      <td>493</td>
+      <td>SP</td>
+      <td>4</td>
+      <td>817700</td>
+      <td>15</td>
+      <td>231</td>
+      <td>908</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019</td>
+      <td>12</td>
+      <td>32041990</td>
+      <td>10</td>
+      <td>586</td>
+      <td>SC</td>
+      <td>7</td>
+      <td>147800</td>
+      <td>1200</td>
+      <td>1200</td>
+      <td>26494</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title fa fa-exclamation-circle"><strong>Lembrete:</strong></p>
+<p>Para verificar os argumentos da função, basta usar o help: <code class="docutils literal notranslate"><span class="pre">help(pd.read_csv)</span></code></p>
+</div>
+<p>Para verificar o tamanho da base de dados podemos utilizar o método <code class="docutils literal notranslate"><span class="pre">shape</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dexp</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(1393174, 11)
+</pre></div></div>
+</div>
+<p>Os dados contam com 1.416.884 linhas e 11 colunas.</p>
+<div class="admonition warning">
+<p class="admonition-title fa fa-exclamation-circle"><strong>Atenção:</strong></p>
+<p>Vamos trabalhar com essa base de dados também na Seção 7.4 - Manipulação de dados.</p>
+</div>
+</section>
+<section id="7.3.2.-Arquivos-XLS-e-XLSX">
+<h3>7.3.2. Arquivos XLS e XLSX<a class="headerlink" href="#7.3.2.-Arquivos-XLS-e-XLSX" title="Permalink to this headline"></a></h3>
+<p>Assim como o caso do CSV, vamos usar o <strong>pandas</strong> para ler o arquivo em <em>Excel</em>.</p>
+<p>Como exemplo, faça o <em>download</em> do arquivo EXP2019_ComexStat <a class="reference external" href="https://nedurcode.com/python/EXP2019_ComexStat.xlsx">AQUI</a>.</p>
+<div class="admonition note">
+<p class="admonition-title fa fa-exclamation-circle"><strong>Observação:</strong></p>
+<p>Após fazer o <em>download</em>, salve o arquivo XLSX no seu diretório de trabalho.</p>
+</div>
+<p>Para importar os dados, podemos usar a função <code class="docutils literal notranslate"><span class="pre">pd.read_excel</span></code>. Para tal, especifique um objeto <strong>dados</strong> com:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dados</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;EXP2019_ComexStat.xlsx&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Novamente, podemos verificar a base, digitando seu nome:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dados</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ano</th>
+      <th>uf</th>
+      <th>exp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2019</td>
+      <td>AC</td>
+      <td>0.032853</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2019</td>
+      <td>AL</td>
+      <td>0.319089</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2019</td>
+      <td>AM</td>
+      <td>0.731092</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2019</td>
+      <td>AP</td>
+      <td>0.261368</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019</td>
+      <td>BA</td>
+      <td>8.168158</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2019</td>
+      <td>CE</td>
+      <td>2.275188</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2019</td>
+      <td>DF</td>
+      <td>0.160701</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2019</td>
+      <td>ES</td>
+      <td>8.800322</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2019</td>
+      <td>GO</td>
+      <td>7.133398</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2019</td>
+      <td>MA</td>
+      <td>3.543623</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2019</td>
+      <td>MG</td>
+      <td>25.138579</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2019</td>
+      <td>MS</td>
+      <td>5.243446</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2019</td>
+      <td>MT</td>
+      <td>17.206104</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>2019</td>
+      <td>ND</td>
+      <td>1.937193</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>2019</td>
+      <td>PA</td>
+      <td>17.841239</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2019</td>
+      <td>PB</td>
+      <td>0.126299</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>2019</td>
+      <td>PE</td>
+      <td>1.466347</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>2019</td>
+      <td>PI</td>
+      <td>0.542833</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>2019</td>
+      <td>PR</td>
+      <td>16.454197</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>2019</td>
+      <td>RJ</td>
+      <td>28.634459</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>2019</td>
+      <td>RN</td>
+      <td>0.394853</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>2019</td>
+      <td>RO</td>
+      <td>1.303910</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>2019</td>
+      <td>RR</td>
+      <td>0.157707</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>2019</td>
+      <td>RS</td>
+      <td>18.545065</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>2019</td>
+      <td>SC</td>
+      <td>8.951839</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>2019</td>
+      <td>SE</td>
+      <td>0.050561</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>2019</td>
+      <td>SP</td>
+      <td>48.852560</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>2019</td>
+      <td>TO</td>
+      <td>1.110499</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Ou, verificar o tamanho, com o atributo <code class="docutils literal notranslate"><span class="pre">shape</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dados</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(28, 3)
+</pre></div></div>
+</div>
+<p>Na próxima seção, faremos alterações nessa base de dados.</p>
+</section>
+</section>
+<section id="7.4.-Manipulação-de-dados">
+<h2>7.4. Manipulação de dados<a class="headerlink" href="#7.4.-Manipulação-de-dados" title="Permalink to this headline"></a></h2>
+<p>Conforme destacado acima, a base de dados de exportações conta com muitas observações e variáveis. Vamos usar o <strong>pandas</strong> para manipular os dados, como por exemplo, selecionar, criar e renomear variáveis, filtrar observações, etc.</p>
+<p>Para iniciar, vamos visualizar novamente a base de dados dexp da seção anterior (se você está no mesmo notebook e já importou os dodos, não é necessário importar novamente).</p>
+<p>Observe os nomes das colunas (variáveis).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dexp</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CO_ANO</th>
+      <th>CO_MES</th>
+      <th>CO_NCM</th>
+      <th>CO_UNID</th>
+      <th>CO_PAIS</th>
+      <th>SG_UF_NCM</th>
+      <th>CO_VIA</th>
+      <th>CO_URF</th>
+      <th>QT_ESTAT</th>
+      <th>KG_LIQUIDO</th>
+      <th>VL_FOB</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2019</td>
+      <td>12</td>
+      <td>70193900</td>
+      <td>10</td>
+      <td>97</td>
+      <td>SP</td>
+      <td>7</td>
+      <td>147600</td>
+      <td>0</td>
+      <td>0</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2019</td>
+      <td>12</td>
+      <td>85444200</td>
+      <td>10</td>
+      <td>63</td>
+      <td>SP</td>
+      <td>4</td>
+      <td>817700</td>
+      <td>99</td>
+      <td>96</td>
+      <td>9299</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2019</td>
+      <td>12</td>
+      <td>84099111</td>
+      <td>11</td>
+      <td>493</td>
+      <td>SP</td>
+      <td>4</td>
+      <td>817600</td>
+      <td>2</td>
+      <td>2</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2019</td>
+      <td>12</td>
+      <td>87087090</td>
+      <td>11</td>
+      <td>493</td>
+      <td>SP</td>
+      <td>4</td>
+      <td>817700</td>
+      <td>15</td>
+      <td>231</td>
+      <td>908</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019</td>
+      <td>12</td>
+      <td>32041990</td>
+      <td>10</td>
+      <td>586</td>
+      <td>SC</td>
+      <td>7</td>
+      <td>147800</td>
+      <td>1200</td>
+      <td>1200</td>
+      <td>26494</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1393169</th>
+      <td>2019</td>
+      <td>10</td>
+      <td>65050019</td>
+      <td>10</td>
+      <td>589</td>
+      <td>SP</td>
+      <td>4</td>
+      <td>817700</td>
+      <td>300</td>
+      <td>300</td>
+      <td>861</td>
+    </tr>
+    <tr>
+      <th>1393170</th>
+      <td>2019</td>
+      <td>10</td>
+      <td>20059900</td>
+      <td>10</td>
+      <td>815</td>
+      <td>RS</td>
+      <td>1</td>
+      <td>927800</td>
+      <td>40210</td>
+      <td>40210</td>
+      <td>29975</td>
+    </tr>
+    <tr>
+      <th>1393171</th>
+      <td>2019</td>
+      <td>10</td>
+      <td>40093100</td>
+      <td>10</td>
+      <td>161</td>
+      <td>SP</td>
+      <td>4</td>
+      <td>817700</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1393172</th>
+      <td>2019</td>
+      <td>10</td>
+      <td>7108000</td>
+      <td>10</td>
+      <td>573</td>
+      <td>ES</td>
+      <td>1</td>
+      <td>727600</td>
+      <td>13</td>
+      <td>13</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <th>1393173</th>
+      <td>2019</td>
+      <td>10</td>
+      <td>94036000</td>
+      <td>11</td>
+      <td>87</td>
+      <td>SC</td>
+      <td>4</td>
+      <td>817700</td>
+      <td>10</td>
+      <td>405</td>
+      <td>290</td>
+    </tr>
+  </tbody>
+</table>
+<p>1393174 rows × 11 columns</p>
+</div></div>
+</div>
+<p>Alternativamente, confira os nomes das colunas com o atributo colunms:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dexp</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Index([&#39;CO_ANO&#39;, &#39;CO_MES&#39;, &#39;CO_NCM&#39;, &#39;CO_UNID&#39;, &#39;CO_PAIS&#39;, &#39;SG_UF_NCM&#39;,
+       &#39;CO_VIA&#39;, &#39;CO_URF&#39;, &#39;QT_ESTAT&#39;, &#39;KG_LIQUIDO&#39;, &#39;VL_FOB&#39;],
+      dtype=&#39;object&#39;)
+</pre></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title fa fa-exclamation-circle"><strong>Observação:</strong></p>
+<p><a class="reference external" href="http://nedurcode.com/python/Pandas_Basics_Cheat_Sheet_datacamp.pdf">AQUI</a>, você encontra um guia rápido do <strong>pandas</strong>, escrito pelo pessoal do <em>Data Camp</em>.</p>
+</div>
+<p>Vejamos algumas manipulações muito utilizadas em bancos de dados:</p>
+<section id="7.4.1.-Selecionar-variáveis">
+<h3>7.4.1. Selecionar variáveis<a class="headerlink" href="#7.4.1.-Selecionar-variáveis" title="Permalink to this headline"></a></h3>
+<p>Para selecionar apenas algumas variáveis, podemos criar um novo objeto <strong>dexp_mod</strong> especificado a partir da seleção de algumas variáveis da base original, como Ano (“CO_ANO”), Mês (“CO_MES”), UF (“SG_UF_NCM”) e Valor FOB (“VL_FOB”):</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dexp_mod</span> <span class="o">=</span> <span class="n">dexp</span><span class="p">[[</span><span class="s2">&quot;CO_ANO&quot;</span><span class="p">,</span> <span class="s2">&quot;CO_MES&quot;</span><span class="p">,</span> <span class="s2">&quot;SG_UF_NCM&quot;</span><span class="p">,</span> <span class="s2">&quot;VL_FOB&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<p>Para verificar a nova base, podemos utilizar o método <code class="docutils literal notranslate"><span class="pre">head()</span></code></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dexp_mod</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CO_ANO</th>
+      <th>CO_MES</th>
+      <th>SG_UF_NCM</th>
+      <th>VL_FOB</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2019</td>
+      <td>12</td>
+      <td>SP</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2019</td>
+      <td>12</td>
+      <td>SP</td>
+      <td>9299</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2019</td>
+      <td>12</td>
+      <td>SP</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2019</td>
+      <td>12</td>
+      <td>SP</td>
+      <td>908</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019</td>
+      <td>12</td>
+      <td>SC</td>
+      <td>26494</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</section>
+<section id="7.4.2.-Renomear-variáveis">
+<h3>7.4.2. Renomear variáveis<a class="headerlink" href="#7.4.2.-Renomear-variáveis" title="Permalink to this headline"></a></h3>
+<p>Para renomear as variáveis, podemos usar o método <code class="docutils literal notranslate"><span class="pre">rename()</span></code>.</p>
+<p>Por exemplo, para renomear “CO_ANO” como “ano”, “CO_MES” como “mes”, “SG_UF_NCM” como “uf” e “VL_FOB” como “exp” na base de dados <strong>dexp_mod</strong>, o seguinte código pode ser usado:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dexp_mod</span> <span class="o">=</span> <span class="n">dexp_mod</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;CO_ANO&quot;</span><span class="p">:</span><span class="s2">&quot;ano&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CO_MES&quot;</span><span class="p">:</span><span class="s2">&quot;mes&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SG_UF_NCM&quot;</span><span class="p">:</span><span class="s2">&quot;uf&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;VL_FOB&quot;</span><span class="p">:</span><span class="s2">&quot;exp&quot;</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Observe que a nova base de dados tem o mesmo nome que a anterior. Se você abrir o objeto <strong>dexp_mod</strong>, as variáveis estarão com os novos nomes.</p>
+<div class="admonition note">
+<p class="admonition-title fa fa-exclamation-circle"><strong>Observação:</strong></p>
+<p>O que está dentro dos colchetes é um <strong>dicionário</strong>, o que também é uma estrutura de dados em Python. Basicamente, um dicionário é uma correspondência. Para mais informações acesse: <a class="reference external" href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries">https://docs.python.org/3/tutorial/datastructures.html#dictionaries</a></p>
+</div>
+</section>
+<section id="7.4.3.-Modificar-dados">
+<h3>7.4.3. Modificar dados<a class="headerlink" href="#7.4.3.-Modificar-dados" title="Permalink to this headline"></a></h3>
+<p>Para criar o log de uma variável, precisamos utilizar o pacote <strong>numpy</strong> que será importado com a abreviação <strong>np</strong>:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+<p>Para criar o log de uma variável, precisamos utilizar a função <code class="docutils literal notranslate"><span class="pre">np.log()</span></code> do numpy, diretamente sobre a coluna selecionada. Por exemplo, para obtermos o log do valor das exportações e salvá-la com o nome <strong>log_exp</strong>, podemos utilizar o seguinte código:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dexp_mod</span><span class="p">[</span><span class="s2">&quot;log_exp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">dexp_mod</span><span class="p">[</span><span class="s2">&quot;exp&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+C:\Users\kenia\anaconda3\lib\site-packages\pandas\core\arraylike.py:397: RuntimeWarning: divide by zero encountered in log
+  result = getattr(ufunc, method)(*inputs, **kwargs)
+</pre></div></div>
+</div>
+<p>Observe que a mensagem de <strong>warning</strong> indica que existem logs de zero, o que resulta em um número indefinido. Você pode organizar o banco de dados por exportações, e verificar que quando as exportações são zero, o resultado é <em>-inf</em>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dexp_mod</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;exp&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ano</th>
+      <th>mes</th>
+      <th>uf</th>
+      <th>exp</th>
+      <th>log_exp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1054934</th>
+      <td>2019</td>
+      <td>9</td>
+      <td>SP</td>
+      <td>0</td>
+      <td>-inf</td>
+    </tr>
+    <tr>
+      <th>890669</th>
+      <td>2019</td>
+      <td>1</td>
+      <td>SP</td>
+      <td>0</td>
+      <td>-inf</td>
+    </tr>
+    <tr>
+      <th>164536</th>
+      <td>2019</td>
+      <td>4</td>
+      <td>SC</td>
+      <td>0</td>
+      <td>-inf</td>
+    </tr>
+    <tr>
+      <th>1140392</th>
+      <td>2019</td>
+      <td>12</td>
+      <td>PR</td>
+      <td>0</td>
+      <td>-inf</td>
+    </tr>
+    <tr>
+      <th>55192</th>
+      <td>2019</td>
+      <td>4</td>
+      <td>RS</td>
+      <td>0</td>
+      <td>-inf</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>720860</th>
+      <td>2019</td>
+      <td>11</td>
+      <td>PA</td>
+      <td>734708540</td>
+      <td>20.414984</td>
+    </tr>
+    <tr>
+      <th>879091</th>
+      <td>2019</td>
+      <td>9</td>
+      <td>PA</td>
+      <td>870210045</td>
+      <td>20.584245</td>
+    </tr>
+    <tr>
+      <th>450799</th>
+      <td>2019</td>
+      <td>4</td>
+      <td>RJ</td>
+      <td>967127923</td>
+      <td>20.689841</td>
+    </tr>
+    <tr>
+      <th>546053</th>
+      <td>2019</td>
+      <td>8</td>
+      <td>PA</td>
+      <td>1093983387</td>
+      <td>20.813091</td>
+    </tr>
+    <tr>
+      <th>1132686</th>
+      <td>2019</td>
+      <td>7</td>
+      <td>PA</td>
+      <td>1193313692</td>
+      <td>20.900000</td>
+    </tr>
+  </tbody>
+</table>
+<p>1393174 rows × 5 columns</p>
+</div></div>
+</div>
+<p>Podemos também transformar o valor US$ FOB das exportações em bilhões com a divisão:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dexp_mod</span><span class="p">[</span><span class="s2">&quot;exp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dexp_mod</span><span class="p">[</span><span class="s2">&quot;exp&quot;</span><span class="p">]</span><span class="o">/</span><span class="mi">1000000000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Observe que nesse caso, estamos substituindo a variável <strong>exp</strong> pelo valor em bilhões:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dexp_mod</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ano</th>
+      <th>mes</th>
+      <th>uf</th>
+      <th>exp</th>
+      <th>log_exp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2019</td>
+      <td>12</td>
+      <td>SP</td>
+      <td>2.400000e-08</td>
+      <td>3.178054</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2019</td>
+      <td>12</td>
+      <td>SP</td>
+      <td>9.299000e-06</td>
+      <td>9.137662</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2019</td>
+      <td>12</td>
+      <td>SP</td>
+      <td>6.300000e-08</td>
+      <td>4.143135</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2019</td>
+      <td>12</td>
+      <td>SP</td>
+      <td>9.080000e-07</td>
+      <td>6.811244</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019</td>
+      <td>12</td>
+      <td>SC</td>
+      <td>2.649400e-05</td>
+      <td>10.184674</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</section>
+<section id="7.4.4.-Agrupar-e-agregar-dados">
+<h3>7.4.4. Agrupar e agregar dados<a class="headerlink" href="#7.4.4.-Agrupar-e-agregar-dados" title="Permalink to this headline"></a></h3>
+<p>Para agrupar a base de dados, podemos utilizar o método <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> do <strong>pandas</strong>, combinado com outras funções. Por exemplo, podemos obter a soma da variável de exportações, agrupada por <em>ano</em> e <em>UF</em>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dexp_mod</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;ano&quot;</span><span class="p">,</span><span class="s2">&quot;uf&quot;</span><span class="p">],</span>  <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="s2">&quot;exp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ano</th>
+      <th>uf</th>
+      <th>exp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2019</td>
+      <td>AC</td>
+      <td>0.032853</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2019</td>
+      <td>AL</td>
+      <td>0.319089</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2019</td>
+      <td>AM</td>
+      <td>0.731093</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2019</td>
+      <td>AP</td>
+      <td>0.261368</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019</td>
+      <td>BA</td>
+      <td>8.162484</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2019</td>
+      <td>CE</td>
+      <td>2.275193</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2019</td>
+      <td>DF</td>
+      <td>0.160701</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2019</td>
+      <td>ES</td>
+      <td>7.105386</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2019</td>
+      <td>GO</td>
+      <td>7.133399</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2019</td>
+      <td>MA</td>
+      <td>3.543623</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2019</td>
+      <td>MG</td>
+      <td>25.138590</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2019</td>
+      <td>MS</td>
+      <td>5.243447</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2019</td>
+      <td>MT</td>
+      <td>17.206105</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>2019</td>
+      <td>ND</td>
+      <td>1.937193</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>2019</td>
+      <td>PA</td>
+      <td>17.841241</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2019</td>
+      <td>PB</td>
+      <td>0.126300</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>2019</td>
+      <td>PE</td>
+      <td>1.466346</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>2019</td>
+      <td>PI</td>
+      <td>0.542833</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>2019</td>
+      <td>PR</td>
+      <td>16.403308</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>2019</td>
+      <td>RJ</td>
+      <td>27.624210</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>2019</td>
+      <td>RN</td>
+      <td>0.394854</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>2019</td>
+      <td>RO</td>
+      <td>1.303910</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>2019</td>
+      <td>RR</td>
+      <td>0.157707</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>2019</td>
+      <td>RS</td>
+      <td>17.256958</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>2019</td>
+      <td>SC</td>
+      <td>8.951856</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>2019</td>
+      <td>SE</td>
+      <td>0.050562</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>2019</td>
+      <td>SP</td>
+      <td>48.645702</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>2019</td>
+      <td>TO</td>
+      <td>1.110498</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title fa fa-exclamation-circle"><strong>Observação:</strong></p>
+<p>Repare que utilizamos o argumento <em>as_index=False</em> ao usar o método <em>groupby</em>. Isso porque, quando não utilizamos esse argumento, <em>[“ano”,“uf”]</em> serão considerados índices da nova série criada. Ao deixar <em>as_index=False</em>, estamos mantendo o índice como uma sequência numérica.</p>
+</div>
+<p>Podemos ainda utilizar várias estatísticas ao mesmo tempo (por exemplo, soma, mínimo e máximo), utilizando o método <strong>agg()</strong>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dexp_mod</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;ano&quot;</span><span class="p">,</span><span class="s2">&quot;uf&quot;</span><span class="p">],</span>  <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="s2">&quot;exp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="nb">sum</span><span class="p">,</span> <span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>sum</th>
+      <th>min</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>ano</th>
+      <th>uf</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="28" valign="top">2019</th>
+      <th>AC</th>
+      <td>0.032853</td>
+      <td>9.000000e-09</td>
+      <td>0.000954</td>
+    </tr>
+    <tr>
+      <th>AL</th>
+      <td>0.319089</td>
+      <td>0.000000e+00</td>
+      <td>0.021772</td>
+    </tr>
+    <tr>
+      <th>AM</th>
+      <td>0.731093</td>
+      <td>0.000000e+00</td>
+      <td>0.013352</td>
+    </tr>
+    <tr>
+      <th>AP</th>
+      <td>0.261368</td>
+      <td>1.000000e-09</td>
+      <td>0.018698</td>
+    </tr>
+    <tr>
+      <th>BA</th>
+      <td>8.162484</td>
+      <td>0.000000e+00</td>
+      <td>0.153340</td>
+    </tr>
+    <tr>
+      <th>CE</th>
+      <td>2.275193</td>
+      <td>0.000000e+00</td>
+      <td>0.113706</td>
+    </tr>
+    <tr>
+      <th>DF</th>
+      <td>0.160701</td>
+      <td>0.000000e+00</td>
+      <td>0.006417</td>
+    </tr>
+    <tr>
+      <th>ES</th>
+      <td>7.105386</td>
+      <td>0.000000e+00</td>
+      <td>0.129798</td>
+    </tr>
+    <tr>
+      <th>GO</th>
+      <td>7.133399</td>
+      <td>0.000000e+00</td>
+      <td>0.161175</td>
+    </tr>
+    <tr>
+      <th>MA</th>
+      <td>3.543623</td>
+      <td>0.000000e+00</td>
+      <td>0.118354</td>
+    </tr>
+    <tr>
+      <th>MG</th>
+      <td>25.138590</td>
+      <td>0.000000e+00</td>
+      <td>0.304937</td>
+    </tr>
+    <tr>
+      <th>MS</th>
+      <td>5.243447</td>
+      <td>0.000000e+00</td>
+      <td>0.152393</td>
+    </tr>
+    <tr>
+      <th>MT</th>
+      <td>17.206105</td>
+      <td>0.000000e+00</td>
+      <td>0.491826</td>
+    </tr>
+    <tr>
+      <th>ND</th>
+      <td>1.937193</td>
+      <td>6.000000e-08</td>
+      <td>0.085973</td>
+    </tr>
+    <tr>
+      <th>PA</th>
+      <td>17.841241</td>
+      <td>0.000000e+00</td>
+      <td>1.193314</td>
+    </tr>
+    <tr>
+      <th>PB</th>
+      <td>0.126300</td>
+      <td>0.000000e+00</td>
+      <td>0.003244</td>
+    </tr>
+    <tr>
+      <th>PE</th>
+      <td>1.466346</td>
+      <td>0.000000e+00</td>
+      <td>0.043024</td>
+    </tr>
+    <tr>
+      <th>PI</th>
+      <td>0.542833</td>
+      <td>0.000000e+00</td>
+      <td>0.056123</td>
+    </tr>
+    <tr>
+      <th>PR</th>
+      <td>16.403308</td>
+      <td>0.000000e+00</td>
+      <td>0.281062</td>
+    </tr>
+    <tr>
+      <th>RJ</th>
+      <td>27.624210</td>
+      <td>0.000000e+00</td>
+      <td>0.967128</td>
+    </tr>
+    <tr>
+      <th>RN</th>
+      <td>0.394854</td>
+      <td>0.000000e+00</td>
+      <td>0.025583</td>
+    </tr>
+    <tr>
+      <th>RO</th>
+      <td>1.303910</td>
+      <td>7.000000e-09</td>
+      <td>0.027731</td>
+    </tr>
+    <tr>
+      <th>RR</th>
+      <td>0.157707</td>
+      <td>1.000000e-09</td>
+      <td>0.012068</td>
+    </tr>
+    <tr>
+      <th>RS</th>
+      <td>17.256958</td>
+      <td>0.000000e+00</td>
+      <td>0.579854</td>
+    </tr>
+    <tr>
+      <th>SC</th>
+      <td>8.951856</td>
+      <td>0.000000e+00</td>
+      <td>0.065901</td>
+    </tr>
+    <tr>
+      <th>SE</th>
+      <td>0.050562</td>
+      <td>0.000000e+00</td>
+      <td>0.002872</td>
+    </tr>
+    <tr>
+      <th>SP</th>
+      <td>48.645702</td>
+      <td>0.000000e+00</td>
+      <td>0.259384</td>
+    </tr>
+    <tr>
+      <th>TO</th>
+      <td>1.110498</td>
+      <td>0.000000e+00</td>
+      <td>0.091234</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</section>
+</section>
+<section id="7.5.-Exportação-de-dados">
+<h2>7.5. Exportação de dados<a class="headerlink" href="#7.5.-Exportação-de-dados" title="Permalink to this headline"></a></h2>
+<p>Podemos utilizar o <strong>pandas</strong> para exportar dados para diversos formatos como <strong>CSV</strong> e <strong>XLSX</strong>.</p>
+<p>Vamos retomar a base de dados modificada anteriormente, e salvar os dados somados de exportação por UF com o nome <em>tabela</em>:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tabela</span> <span class="o">=</span> <span class="n">dexp_mod</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;ano&quot;</span><span class="p">,</span><span class="s2">&quot;uf&quot;</span><span class="p">],</span>  <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>Esses dados serão salvos em CSV e XLS.</p>
+<section id="7.5.1.-Dados-em-CSV">
+<h3>7.5.1. <strong>Dados em CSV</strong><a class="headerlink" href="#7.5.1.-Dados-em-CSV" title="Permalink to this headline"></a></h3>
+<p>Suponha que você queira exportar a tabela com dados agregados das exportações por UF e ano.</p>
+<p>Nesse caso, podemos usar, por exemplo, a função <code class="docutils literal notranslate"><span class="pre">to_csv()</span></code> do pacote <strong>pandas</strong>:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tabela</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;Exp_UF_2019v.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Observe que a base de dados foi salva no seu diretório de trabalho. Se você abrir o arquivo CSV, irá observar que os dados estão separados por vírgula. A função <code class="docutils literal notranslate"><span class="pre">to_csv()</span></code> utiliza vírgula (,) como separador padrão.</p>
+<p>Para mudar o separador para ponto e vírgula (;), precisamos indicar no argumento <em>sep</em> da função:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tabela</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;Exp_UF_2019pv.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>De forma alternativa, se quisermos salvar a tabela apenas externamente, podemos encadear os dois códigos, usando:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dexp_mod</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;ano&quot;</span><span class="p">,</span><span class="s2">&quot;uf&quot;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;Exp_UF_2019pv.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Lembre-se, você pode tirar suas dúvidas sobre as funções com a função help:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>help(pd.DataFrame.to_csv)
+</pre></div>
+</div>
+</section>
+<section id="7.5.2.-Dados-em-XLSX">
+<h3>7.5.2. <strong>Dados em XLSX</strong><a class="headerlink" href="#7.5.2.-Dados-em-XLSX" title="Permalink to this headline"></a></h3>
+<p>Para exportar para excel, podmeos usar a função <code class="docutils literal notranslate"><span class="pre">to_excel()</span></code> do pacote <strong>pandas</strong>:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tabela</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;Exp_UF_2019.xlsx&#39;</span><span class="p">,</span>  <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;2019&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Observe que o argumento <em>sheet_name</em>, escreve 2019 no nome da aba do excel. Esse é um argumento opcional do método, que será muito útil principalmente quando você precisar salvar várias abas no mesmo arquivo.</p>
+<div class="admonition warning">
+<p class="admonition-title fa fa-exclamation-circle"><strong>Atenção:</strong></p>
+<p>O pacote <strong>pandas</strong> possui diversas outras opções para ler e escrever dados, que podem ser conferidas em: <a class="reference external" href="https://pandas.pydata.org/docs/reference/io.html">https://pandas.pydata.org/docs/reference/io.html</a>.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="06Matrizes.html" class="btn btn-neutral float-left" title="6. Matrizes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="08Graf.html" class="btn btn-neutral float-right" title="8. Gráficos" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Kênia B. de Souza e Vinícius A. Vale.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
