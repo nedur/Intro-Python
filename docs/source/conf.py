@@ -18,8 +18,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Introdução ao Python'
-copyright = '2022, Kênia B. de Souza e Vinícius A. Vale'
-author = 'Kênia B. de Souza e Vinícius A. Vale'
+copyright = '2022, Souza, Alberti, Vale'
+author = 'Kênia B. de Souza, Tânia M. Alberti, e Vinícius A. Vale'
 
 # The full version, including alpha/beta/rc tags
 release = '1.0'

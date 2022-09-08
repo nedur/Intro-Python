@@ -10,7 +10,7 @@
 Introdução ao Python
 ====================
 
-SOUZA, K. B. VALE, V. A. **Introdução ao Python**. Núcleo de Estudos em Desenvolvimento Urbano e Regional (NEDUR) da Universidade Federal do Paraná (UFPR), Curitiba-PR, 2022. Disponível em: [http://www.nedur.ufpr.br/portal/cursos](http://www.nedur.ufpr.br/portal/cursos/)
+SOUZA, K. B., ALBERTI, T. M., VALE, V. A. **Introdução ao Python**. Núcleo de Estudos em Desenvolvimento Urbano e Regional (NEDUR) da Universidade Federal do Paraná (UFPR), Curitiba-PR, 2022. Disponível em: [http://www.nedur.ufpr.br/portal/cursos](http://www.nedur.ufpr.br/portal/cursos/)
 
 
 .. toctree::
